@@ -294,29 +294,47 @@ Add screenshots inside the `screenshots/` folder.
 ### Resume Analysis
 
 ```text
-screenshots/resume-analysis.png
+screenshots/resume-analysis1.png
+```
+
+```text
+screenshots/resume-analysis2.png
+```
+
+```text
+screenshots/resume-analysis3.png
 ```
 
 ### Job Recommendations
 
 ```text
-screenshots/job-recommendations.png
+screenshots/job-recommendations1.png
+```
+
+```text
+screenshots/job-recommendations2.png
+```
+
+```text
+screenshots/job-recommendations3.png
+```
+
+```text
+screenshots/job-recommendations4.png
 ```
 
 ### CSV Export
 
 ```text
-screenshots/csv-export.png
+screenshots/job_recommendations.csv
 ```
 
 Example markdown for screenshots:
 
 ```markdown
-![Resume Analysis](screenshots/resume-analysis.png)
+![Resume Analysis](screenshots/resume-analysis1.png)
 
-![Job Recommendations](screenshots/job-recommendations.png)
-
-![CSV Export](screenshots/csv-export.png)
+![Job Recommendations](screenshots/job-recommendations1.png)
 ```
 
 ---
