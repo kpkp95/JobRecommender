@@ -1,0 +1,42 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy AI Job Recommender
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v3
+        with:
+          service: ai-job-recommender
+          region: us-central1
+          source: .
+          env_vars: |
+            GOOGLE_CLOUD_PROJECT=agent-adk-494521
+            GOOGLE_CLOUD_LOCATION=us-central1
+            GEMINI_MODEL=gemini-2.5-flash
+            GLOBAL_JOBS_ACTOR_ID=jpraRc4MCUh5ehbHV
+          secrets: |
+            APIFY_API_TOKEN=APIFY_API_TOKEN:latest
+          flags: |
+            --service-account=ai-job-recommender-sa@agent-adk-494521.iam.gserviceaccount.com
+            --allow-unauthenticated
